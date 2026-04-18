@@ -1,0 +1,199 @@
+* {
+    font-family: 'Kanit', sans-serif;
+}
+.hero-section {z-index: 1; /* ดันเนื้อหาให้อยู่เหนือฝุ่น */
+    position: relative; /* ต้องใส่คู่กับ z-index เสมอ */
+            height: 100vh; /* ให้สูงเต็มหน้าจอพอดี */
+            background-color: #000; /* พื้นหลังสีดำ */
+            background-image: url('images/div.hero_content.svg'); /* ดึงรูป SVG มาใส่ */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative; /* เพิ่มบรรทัดนี้: บอกให้ลูกๆ อ้างอิงตำแหน่งจากกล่องนี้ */
+    overflow: hidden; /* เพิ่มบรรทัดนี้: ถ้าฝุ่นลอยทะลุขอบกล่องให้ซ่อนทิ้งไป */
+    
+        }
+        /* ตกแต่งหัวข้อหลัก */
+.main-title {
+    font-size: 50px; /* ขนาดตัวอักษรใหญ่ๆ */
+    color: white; /* สีขาว */
+    margin-bottom: 10px; /* ระยะห่างด้านล่าง */
+}
+
+/* ตกแต่งคำอธิบาย */
+.sub-title {
+    font-size: 20px;
+    color: #cccccc; /* สีเทาสว่างๆ จะได้ดูแพง */
+    margin-bottom: 30px;
+}
+
+/* ตกแต่งปุ่มกดให้ดูเป็นปุ่ม ไม่ใช่แค่ลิงก์ธรรมดา */
+.primary-btn {
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.8s; /* โผล่มาหลังคำอธิบาย (sub-title ใช้ 0.5s) */
+    background-color: #8a2be2;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    /* เพิ่มบรรทัดนี้: สั่งให้เวลาเปลี่ยนสี ให้ค่อยๆ เปลี่ยนใน 0.3 วินาที */
+    transition: all 0.3s ease; 
+   border-radius: 8px;
+}
+/* เอฟเฟกต์ตอนเอาเมาส์ไปวางทับ (Hover) */
+.primary-btn:hover {
+    background-color: #ff00b7; /* เปลี่ยนเป็นสีฟ้า Cyan สว่างๆ */
+    color: #000; /* เปลี่ยนตัวหนังสือเป็นสีดำ */
+    transform: scale(1.05); /* ให้ปุ่มขยายใหญ่ขึ้น 5% */
+    box-shadow: 0 0 15px #bf0ec2; /* ใส่แสงเรืองแสงรอบๆ ปุ่ม */
+}
+
+.secondary-btn {
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.0s; /* พี่ขยับเป็น 1.0s เพื่อให้มันเด้งตามหลังปุ่มโปรเจคนิดนึง จะดูเท่กว่าครับ */
+    
+    /* --- หัวใจสำคัญอยู่ตรงนี้ครับ --- */
+    background-color: transparent; /* สั่งให้พื้นหลังโปร่งใส */
+    border: 2px solid #ffffff;     /* สร้างเส้นขอบหนา 2px สีขาว */
+    color: #ffffff;                /* สีตัวอักษรเป็นสีขาว */
+    /* -------------------------- */
+    
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block; /* ช่วยให้การคำนวณขนาดปุ่มแม่นยำขึ้น */
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ไปวางทับ (Hover) */
+.secondary-btn:hover {
+    background-color: #ffffff;    /* พอชี้แล้วให้พื้นหลังกลายเป็นสีขาวทึบ */
+    color: #000000;               /* เปลี่ยนตัวหนังสือเป็นสีดำเพื่อให้ตัดกับพื้นหลังขาว */
+    transform: scale(1.05);       /* ขยายใหญ่ขึ้น 5% เท่าปุ่มแรก */
+    box-shadow: 0 0 15px #ffffff; /* ใส่แสงเรืองแสงสีขาวรอบๆ ปุ่ม */
+}
+
+.button-group {
+    display: flex;             /* สั่งให้กล่องนี้ใช้ระบบ Flexbox */
+    justify-content: center;   /* ดันลูกๆ ทุกคนไปอยู่ตรงกลางจอ */
+    gap: 100px;                 /* เว้นระยะห่างระหว่างปุ่ม 20px เสมอ */
+    margin-top: 30px;          /* ดันให้ห่างจากตัวอักษรข้างบนนิดหน่อย */
+    flex-wrap: wrap;    
+    width: 100%;       /* ทริคเด็ด: ถ้าจอมือถือเล็กจัด มันจะปัดปุ่มลงมาซ้อนกันให้อัตโนมัติ! */
+}
+
+
+
+/* เอาสูตรไปใส่ให้หัวข้อหลักและคำอธิบาย */
+.main-title {
+    animation: fadeUp 1s ease forwards; /* ใช้เวลา 1 วินาที */
+}
+
+.sub-title {
+    opacity: 0; /* ซ่อนไว้ก่อนตอนแรก */
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.5s; /* หน่วงเวลาไว้ครึ่งวินาที ค่อยให้ลอยตามหัวข้อหลักมา */
+}
+.tech-stack {
+   
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px 0; /* เปลี่ยนจาก 20px เป็น 10px เพื่อให้แถบบางลง */
+    display: flex;
+    flex-direction: column;  /* สั่งให้ของเรียงต่อกันจากบนลงล่าง */
+    align-items: center;     /* จัดของทุกอย่างให้อยู่กึ่งกลางในแนวนอน */
+    justify-content: center; /* จัดของทุกอย่างให้อยู่กึ่งกลางในแนวตั้ง */
+    
+    /* โค้ดอนิเมชั่น fadeUp เดิมของคุณ ปล่อยไว้เหมือนเดิมได้เลย */
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.tech-stack p {
+
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 2px; /* ยืดระยะห่างตัวอักษรให้ดูเท่ */
+    margin: 0; /* เพิ่มบรรทัดนี้! เพื่อลบระยะห่างแฝงของตัวหนังสือทิ้งไป */
+    margin-bottom: 10px; /* แล้วค่อยสั่งดันรูปลงมานิดนึงแทน */
+}
+
+/* 2. สั่งให้โลโก้ไปอยู่ตรงกลาง */
+.logos {
+    display: flex;
+    justify-content: center; /* พระเอกของเรา! สั่งให้ของข้างในจัดกลางเสมอ */
+    align-items: center; /* ให้อยู่กึ่งกลางบน-ล่างพอดี */
+    gap: 30px;
+    flex-wrap: wrap; /* เพิ่มบรรทัดนี้! แปลว่ายอมให้ห่อ/ปัดตกลงมาได้ถ้าจอเล็ก */
+}
+
+.logos img {
+    height: 40px;
+    transition: transform 0.3s ease; /* บอกเบราว์เซอร์ว่า 'ถ้ามีการขยาย ให้ค่อยๆ สมูทใน 0.3 วิ' */
+    /* ลบโค้ด filter: grayscale ทิ้งไปเลยครับ มันจะได้มีสีปกติ */
+}
+
+.logos img:hover {
+    transform: scale(1.3); /* สั่งให้ขยายใหญ่ขึ้น 30% (ถ้าอยากให้ใหญ่กว่านี้ก็ปรับเป็น 1.4 หรือ 1.5 ได้ครับ) */
+}
+/* สร้างสูตรการเคลื่อนไหว ชื่อว่า fadeUp */
+@keyframes fadeUp {
+    from {
+        opacity: 0; /* เริ่มต้นที่มองไม่เห็น */
+        transform: translateY(50px); /* เริ่มต้นที่ตำแหน่งต่ำลงไป 50px */
+    }
+    to {
+        opacity: 1; /* ชัดเจน 100% */
+        transform: translateY(0); /* กลับมาตำแหน่งปกติ */
+    }
+}
+/* เลเยอร์ผงอวกาศ */
+.space-dust {
+    position: absolute; /* ลอยตัว */
+    top: 0;             /* ชิดขอบบน */
+    left: 0;            /* ชิดขอบซ้าย */
+    width: 3px;         /* ขนาดกล่องต้นฉบับไม่ต้องใหญ่ครับ แค่จุดเดียวพอ */
+    height: 2px;
+    
+    background: transparent;
+    border-radius: 50%;
+    opacity: 0.8; /* เพิ่มความชัดจาก 0.5 เป็น 0.8 */
+
+    
+    /* ปั๊มเงาชุดใหญ่ (พิกัดสุ่ม) */
+    box-shadow: 
+        10vw 20vh #fff, 25vw 15vh #d8b4fe, 40vw 35vh #8a2be2, 55vw 10vh #fff, 70vw 25vh #d8b4fe, 85vw 40vh #8a2be2,
+        5vw 60vh #fff, 15vw 80vh #d8b4fe, 30vw 50vh #8a2be2, 45vw 90vh #fff, 60vw 70vh #d8b4fe, 75vw 55vh #8a2be2,
+        90vw 85vh #fff, 12vw 45vh #d8b4fe, 28vw 5vh #8a2be2, 42vw 25vh #fff, 58vw 45vh #d8b4fe, 72vw 5vh #8a2be2,
+        88vw 30vh #fff, 2vw 15vh #d8b4fe, 18vw 95vh #8a2be2, 33vw 65vh #fff, 48vw 15vh #d8b4fe, 63vw 85vh #8a2be2,
+        78vw 35vh #fff, 93vw 10vh #d8b4fe, 8vw 30vh #8a2be2, 22vw 70vh #fff, 38vw 10vh #d8b4fe, 52vw 80vh #8a2be2,
+        68vw 20vh #fff, 82vw 60vh #d8b4fe, 98vw 40vh #8a2be2, 14vw 10vh #fff, 36vw 55vh #d8b4fe, 50vw 30vh #8a2be2;
+
+    animation: spaceFloat 25s ease-in-out infinite alternate;
+}
+
+/* สูตรลับทำให้ดูแรนดอม: หมุน + ขยาย + ย้ายตำแหน่งนิดหน่อย */
+@keyframes spaceFloat {
+    0% {
+        transform: rotate(0deg) scale(1) translate(0, 0);
+    }
+    50% {
+        transform: rotate(10deg) scale(1.2) translate(10px, -20px);
+    }
+    100% {
+        transform: rotate(-5deg) scale(0.9) translate(-15px, 10px);
+    }
+}

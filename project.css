@@ -1,0 +1,285 @@
+* {
+    font-family: 'Kanit', sans-serif;
+}
+body {
+    background-color: #0d0d0d; /* หรือดำสนิท #000 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 📦 1. จัดกล่อง Z-Pattern ไม่ให้ติดขอบจอ และดันหัวข้อขึ้น */
+.z-container {
+    display: flex;
+    align-items: flex-start; /* 🌟 ดันเนื้อหา (เช่น H2) ให้ชิดด้านบน ไม่ให้อยู่ตรงกลางจอ */
+    justify-content: center;
+    gap: 40px;               /* 📏 เว้นระยะห่างระหว่างซ้าย-ขวา */
+    width: 90%;              /* 📏 ให้กล่องกว้างแค่ 90% (เหลือขอบซ้าย-ขวาไว้ข้างละ 5%) */
+    max-width: 1200px;       /* 📏 ไม่ให้กว้างเกินไปเวลาเปิดในจอคอมใหญ่ๆ */
+    margin: 0 auto 60px auto;/* 🌟 จัดให้อยู่กึ่งกลางหน้าจอ และเว้นระยะด้านล่าง 60px */
+}
+
+/* สลับฝั่ง */
+.z-container.reverse {
+    flex-direction: row-reverse !important; /* 🌟 สลับฝั่งซ้าย-ขวาแบบง่ายๆ ด้วยคลาส "reverse" */
+}
+
+.z-box {
+    flex: 1;
+    width: 50%;
+}
+
+video {
+    width: 100%;       /* บังคับให้กว้างพอดีกล่อง */
+    border-radius: 12px; /* ลบมุมให้โค้งมนดูสวยขึ้น */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* ใส่เงาให้คลิปลอยเด่นขึ้นมา */
+}
+
+/* 📦 1. ตัวควบคุมกล่องผลงานแต่ละชิ้น (Section) */
+.project-item {
+    position: relative;    /* 🚩 สำคัญมาก: เพื่อเป็นหมุดให้รูปพื้นหลังอิงตำแหน่ง */
+    width: 100%;
+    min-height: 100vh;     /* 📏 บังคับให้สูงอย่างน้อย 1 หน้าจอเต็มๆ */
+    
+    display: flex;         /* จัดระเบียบเนื้อหาข้างใน */
+    flex-direction: column;
+    justify-content: center; /* จัดกลางแนวตั้ง */
+    align-items: center;     /* จัดกลางแนวนอน */
+    
+    overflow: hidden;      /* ✂️ ตัดส่วนที่ล้นออก (เช่น รูปพื้นหลังที่ใหญ่เกิน) */
+    
+}
+
+/* 📦 กล่องหลักของแต่ละระบบ (ช่วยให้รูปในระบบนั้นๆ อยู่ด้วยกัน) */
+.project-sub-section {
+    width: 100%;
+    margin-bottom: 80px; /* เว้นระยะระหว่าง ระบบเซฟ กับ ระบบร้านค้า */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+/* 🖼️ แผนผังร่างยักษ์ (Flowchart) */
+.flowchart-jumbo {
+    width: 100%;
+    max-width: 900px;
+    margin: 15px auto 30px auto;
+    display: block;
+    
+    box-sizing: border-box; /* 🌟 เวทมนตร์ป้องกันการทะลุจอ! บังคับให้ padding ถูกนับรวมอยู่ใน 100% แล้ว */
+    
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* 💻 กล่องรวมโค้ดคู่ (Code Duo) */
+.code-duo-container {
+    display: flex;
+    flex-wrap: wrap; /* เผื่อหน้าจอแคบ รูปจะลงมาซ้อนกันเอง */
+    justify-content: center;
+    align-items: flex-start; /* 🌟 เพิ่มคำสั่งนี้! ให้รูปที่สูงไม่เท่ากัน เริ่มต้นที่ขอบบนตรงกันเสมอ */
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 15px;
+}
+
+/* 💻 ภาพคู่ */
+.code-duo-container img {
+    width: 45%; /* 🌟 เปลี่ยนตรงนี้! บังคับให้กว้างแค่ 45% จะได้มีที่ให้อีกรูปมายืนข้างๆ */
+    max-width: 800px; 
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+/* 🖼️ ตัวรูปพื้นหลัง (ให้อยู่ในกล่อง แล้วเกาะติดหน้าจอไปเรื่อยๆ) */
+.project-bg {
+    position: sticky;   /* เกาะติดหน้าจอตอนเราเลื่อนดู */
+    top: 0;
+    width: 100%;
+    height: 100vh;      /* สูงแค่ 1 หน้าจอพอดี ภาพจะได้ไม่โดนบังคับซูมจนแตก */
+    
+    object-fit: cover;
+    pointer-events: none;
+    
+    /* เวทมนตร์ลบขอบเหมือนเดิม */
+    mix-blend-mode: screen; 
+    opacity: 0.6;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+/* 📦 กล่องคลุมรูป (ทำให้ภาพไร้น้ำหนัก ไม่ดันเนื้อหาลง) */
+.bg-wrapper {
+    position: absolute; /* หลุดออกจาก Document Flow ไม่ดันใครแน่นอน */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;       /* ให้กล่องสูงครอบคลุมเนื้อหาโปรเจกต์ทั้งหมด */
+    z-index: -1;        /* ดันไปอยู่หลังสุด */
+}
+
+
+
+/* คลาสซ่อนของ เตรียมพุ่งจากซ้าย */
+.fade-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+    will-change: transform, opacity; /* 🌟 เวทมนตร์ลดอาการกระตุก! สั่งให้ GPU เตรียมพร้อม */
+}
+
+/* คลาสซ่อนของ เตรียมพุ่งจากขวา */
+.fade-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease-out;
+    will-change: transform, opacity; /* 🌟 เวทมนตร์ลดอาการกระตุก! สั่งให้ GPU เตรียมพร้อม */
+}
+
+/* คลาส "โชว์ตัว" (เดี๋ยว JS จะแอบเอาคำนี้มาแปะให้ตอนเราเลื่อนไปเจอ) */
+.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* จัดการกล่องหัวข้อให้อยู่หมัด */
+.page-title-container {
+    position: relative;
+    z-index: 10;          /* 🌟 ดันให้อยู่หน้าสุด จะได้ไม่โดนรูปบัง */
+    text-align: center;
+    padding-top: 20px;   /* 📏 เว้นระยะจากขอบบนจอ ไม่ให้ชิดขอบเกินไป */
+    color: white;     
+    margin-bottom: 30px;    /* 🎨 บังคับให้เป็นสีขาวสว่างๆ */
+}
+
+/* แต่งตัวหนังสือ H1 ให้เด่นๆ */
+.page-title {
+   
+    font-size: 3.5rem;    /* ปรับขนาดให้ใหญ่เตะตา */
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* ใส่แสงเรืองรองนิดๆ ให้ดู Tech */
+}
+
+h1.page-title {
+    margin-top: 0;        /* 🌟 ดันให้ชิดขอบบนสุด */
+    font-size: 4.5rem;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+p.page-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.space-dust {
+    position: fixed; /* ตามติด */
+    top: 0;             /* ชิดขอบบน */
+    left: 0;            /* ชิดขอบซ้าย */
+    width: 3px;         /* ขนาดกล่องต้นฉบับไม่ต้องใหญ่ครับ แค่จุดเดียวพอ */
+    height: 2px;
+    z-index: -999; /* ให้แน่ใจว่ามันอยู่ใต้ทุกอย่าง */
+    background: transparent;
+    border-radius: 50%;
+    opacity: 0.8; /* เพิ่มความชัดจาก 0.5 เป็น 0.8 */
+/* 3. เวทมนตร์ให้เมาส์คลิกทะลุฝุ่นได้ */
+    pointer-events: none;
+    
+    /* ปั๊มเงาชุดใหญ่ (พิกัดสุ่ม) */
+    box-shadow: 
+        10vw 20vh #fff, 25vw 15vh #d8b4fe, 40vw 35vh #8a2be2, 55vw 10vh #fff, 70vw 25vh #d8b4fe, 85vw 40vh #8a2be2,
+        5vw 60vh #fff, 15vw 80vh #d8b4fe, 30vw 50vh #8a2be2, 45vw 90vh #fff, 60vw 70vh #d8b4fe, 75vw 55vh #8a2be2,
+        90vw 85vh #fff, 12vw 45vh #d8b4fe, 28vw 5vh #8a2be2, 42vw 25vh #fff, 58vw 45vh #d8b4fe, 72vw 5vh #8a2be2,
+        88vw 30vh #fff, 2vw 15vh #d8b4fe, 18vw 95vh #8a2be2, 33vw 65vh #fff, 48vw 15vh #d8b4fe, 63vw 85vh #8a2be2,
+        78vw 35vh #fff, 93vw 10vh #d8b4fe, 8vw 30vh #8a2be2, 22vw 70vh #fff, 38vw 10vh #d8b4fe, 52vw 80vh #8a2be2,
+        68vw 20vh #fff, 82vw 60vh #d8b4fe, 98vw 40vh #8a2be2, 14vw 10vh #fff, 36vw 55vh #d8b4fe, 50vw 30vh #8a2be2;
+
+    animation: spaceFloat 25s ease-in-out infinite alternate;
+}
+
+/* สูตรลับทำให้ดูแรนดอม: หมุน + ขยาย + ย้ายตำแหน่งนิดหน่อย */
+@keyframes spaceFloat {
+    0% {
+        transform: rotate(0deg) scale(1) translate(0, 0);
+    }
+    50% {
+        transform: rotate(10deg) scale(1.2) translate(10px, -20px);
+    }
+    100% {
+        transform: rotate(-5deg) scale(0.9) translate(-15px, 10px);
+    }
+}
+
+
+/* 🎬 จัดการคลิปวิดีโอให้อยู่ฝั่งซ้ายแบบหล่อๆ */
+.video-frame {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    display: block;
+}
+/* 🖼️ จัดรูปโค้ดคู่กัน 2 รูป */
+/* กล่องตารางเล็กๆ ใส่รูป 2 อันคู่กัน */
+.mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ✨ แสงเรืองรองระดับ 1 (สำหรับ H2 หัวข้อใหญ่) */
+h2 {
+    margin-top: 0; 
+    color: #fff;
+    text-shadow: 0 0 15px rgba(153, 69, 255, 0.8);
+}
+/* ✨ แสงเรืองรองระดับ 2 (สำหรับ H3 หัวข้อย่อย) */
+.glow-text {
+    color: #e0e0e0;
+    text-shadow: 0 0 8px rgba(20, 241, 149, 0.5); /* สีเขียวมิ้นต์ Solana อ่อนๆ */
+    margin-bottom: 10px;
+}
+
+/* ✨ แสงเรืองรองระดับ 3 (สำหรับ p เนื้อหา - เบาที่สุด) */
+p {
+    color: #ccc;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.2); /* แค่เรืองแสงขาวจางๆ ให้อ่านชัด */
+    line-height: 1.6;
+}
+.play-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-top: 20px;
+    background: transparent;
+    color: #14F195; /* สีเขียว Solana */
+    border: 2px solid #14F195;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(20, 241, 149, 0.3);
+}
+
+.play-btn:hover {
+    background: #14F195;
+    color: #000;
+    box-shadow: 0 0 20px rgba(20, 241, 149, 0.6);
+    transform: translateY(-3px); /* ลอยขึ้นนิดนึงตอนเมาส์ชี้ */
+}
+
+.play-btn span {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
